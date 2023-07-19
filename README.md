@@ -1,4 +1,7 @@
 # Compose Quadrant App
+
+![](docs/images/screenshot.png)
+
 ## Description
 This is a simple Kotlin app to display information about some Composable functions.
 
@@ -9,7 +12,7 @@ or on a physical device via USB or WIFI debugging.
 
 ## Installing the APP
 
-- Clone this repo to local environment
+- Clone this repo to local environment.
 
         git@github.com:ntwigamartin/Compose_quadrant_app.git
 - Start Android Studio, open existing project and select this project on the location you had cloned it.
