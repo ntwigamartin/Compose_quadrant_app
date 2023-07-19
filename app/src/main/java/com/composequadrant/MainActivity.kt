@@ -38,16 +38,7 @@ class MainActivity : ComponentActivity() {
 //                    modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ComposeQuadrant(
-                        textHeading = stringResource(id = R.string.text_composable_heading),
-                        textBody = stringResource(id = R.string.text_composable_body),
-                        imageHeading = stringResource(id = R.string.image_composable_heading),
-                        imageBody = stringResource(id = R.string.image_composable_body),
-                        rowHeading = stringResource(id = R.string.row_composable_heading),
-                        rowBody = stringResource(id = R.string.row_composable_body),
-                        columnHeading = stringResource(id = R.string.column_composable_heading),
-                        columnBody = stringResource(id = R.string.column_composable_body)
-                    )
+                    ComposeQuadrant()
                 }
             }
         }
@@ -56,18 +47,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ComposeQuadrant(
-    textHeading: String,
-    textBody: String,
-    imageHeading: String,
-    imageBody: String,
-    rowHeading: String,
-    rowBody: String,
-    columnHeading: String,
-    columnBody: String,
-    modifier: Modifier = Modifier
-) {
-    val defaultTextStyle = TextStyle(fontSize = 16.sp)
 
+) {
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -85,8 +66,10 @@ fun ComposeQuadrant(
                     .background(color = Color(0xFFEADDFF))
                     .padding(16.dp)
             ) {
-                Text(text = textHeading, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
-                Text(text = textBody, textAlign = TextAlign.Justify, style = defaultTextStyle)
+                Quadrant(
+                    heading = stringResource(id = R.string.text_composable_heading),
+                    body = stringResource(id =R.string.text_composable_body)
+                )
             }
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -97,8 +80,10 @@ fun ComposeQuadrant(
                     .background(color = Color(0xFFD0BCFF))
                     .padding(16.dp)
             ) {
-                Text(text = imageHeading,fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
-                Text(text = imageBody, textAlign = TextAlign.Justify, style = defaultTextStyle)
+                Quadrant(
+                    heading = stringResource(id = R.string.image_composable_heading),
+                    body = stringResource(id =R.string.image_composable_body)
+                )
             }
         }
         Row(
@@ -115,8 +100,10 @@ fun ComposeQuadrant(
                     .background(color = Color(0xFFB69DF8))
                     .padding(16.dp)
             ) {
-                Text(text = rowHeading, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
-                Text(text = rowBody, textAlign = TextAlign.Justify, style = defaultTextStyle)
+                Quadrant(
+                    heading = stringResource(id = R.string.row_composable_heading),
+                    body = stringResource(id =R.string.row_composable_body)
+                )
             }
             Column(
                 verticalArrangement = Arrangement.Center,
@@ -127,26 +114,37 @@ fun ComposeQuadrant(
                     .background(color = Color(0xFFF6EDFF))
                     .padding(16.dp)
             ) {
-                Text(text = columnHeading, fontWeight = FontWeight.Bold, modifier = Modifier.padding(bottom = 16.dp))
-                Text(text = columnBody, textAlign = TextAlign.Justify, style = defaultTextStyle)
+                Quadrant(
+                    heading = stringResource(id = R.string.column_composable_heading),
+                    body = stringResource(id =R.string.column_composable_body)
+                )
             }
         }
     }
 }
 
+@Composable
+fun Quadrant(heading: String, body: String) {
+    val defaultTextStyle = TextStyle(fontSize = 16.sp)
+
+    Text(
+        text = heading,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(bottom = 16.dp)
+    )
+    Text(
+        text = body,
+        textAlign = TextAlign.Justify,
+        style = defaultTextStyle
+    )
+}
+
+
+
 @Preview(showBackground = true)
 @Composable
 fun ComposeQuadrantPreview() {
     ComposeQuadrantTheme {
-        ComposeQuadrant(
-            textHeading = stringResource(id = R.string.text_composable_heading),
-            textBody = stringResource(id = R.string.text_composable_body),
-            imageHeading = stringResource(id = R.string.image_composable_heading),
-            imageBody = stringResource(id = R.string.image_composable_body),
-            rowHeading = stringResource(id = R.string.row_composable_heading),
-            rowBody = stringResource(id = R.string.row_composable_body),
-            columnHeading = stringResource(id = R.string.column_composable_heading),
-            columnBody = stringResource(id = R.string.column_composable_body)
-        )
+        ComposeQuadrant()
     }
 }
